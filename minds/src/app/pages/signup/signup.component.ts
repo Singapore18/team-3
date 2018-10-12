@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-signup',
@@ -31,7 +32,10 @@ export class SignupComponent implements OnInit {
   currentQuestionIndex = 0;
   current: Question = this.questions[this.currentQuestionIndex];
 
-  constructor(private changeDetector: ChangeDetectorRef) { }
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private apiService: ApiService
+  ) { }
 
   ngOnInit() {
     const {webkitSpeechRecognition}: IWindow = <IWindow>window;
@@ -52,12 +56,20 @@ export class SignupComponent implements OnInit {
     this.answers[this.questions[this.currentQuestionIndex].answerKey] = answer;
     this.currentQuestionIndex += 1;
     this.current = this.questions[this.currentQuestionIndex];
+
+    if (this.currentQuestionIndex === this.questions.length) {
+      this.submit();
+    }
   }
 
   startAnswer() {
     this.recognition.start();
     this.answering = true;
     this.changeDetector.detectChanges();
+  }
+
+  submit() {
+    this.apiService.registerClient(this.answers['name'], this.answers['age'], this.answers['location'], this.answers['interests']);
   }
 
 }
