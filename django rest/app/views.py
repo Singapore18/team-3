@@ -47,6 +47,7 @@ def addNewPendingResume(requests, data):
     
 
 def datacleaning(requests):
+    import json
     interestList = ["bake", "clean", "cook", "dance", "make coffee", "make muffins",
                     "read", "play", "games", "singing", "dancing"]
     interests = []
@@ -54,7 +55,10 @@ def datacleaning(requests):
     mrtstations = ["Bedok", "Tampines", "Jurong", "Dhoby Ghaut", "Orchard", "Tanjong Pagar",
                    "Raffles Place"]
     toReturn = {}
-    userdata = request.POST.get['userData']
+    body_unicode = ((requests.body.decode('utf-8')))
+    jsonBody = json.loads(body_unicode)
+    #print(jsonBody)
+    userdata=jsonBody['userData']
 
     #userdata = {"name" : "I am paulina", "interests" : "singing and dancing", "location" : "I live in Bedok", "age": "22" }
     for (key, value) in userdata.items():
@@ -71,7 +75,7 @@ def datacleaning(requests):
                     interests.append(i)
                 toReturn["interests"] = interests
                 
-        elif key == "address":
+        elif key == "location":
             addressArray = value.split()
             for i in addressArray:
                 if i in mrtstations:
@@ -99,8 +103,14 @@ def datacleaning(requests):
                 #else if("sunday" in scheduleArray):
                     #   scheduler.append("Sunday")
                 #toReturn[schedule] = scheduler
+    
+    try:
+        pending_resumes = requests.session['pending_resume']
+    except: 
+        initializeData(requests)
+        pending_resumes = requests.session['pending_resume']
+        confirmed_resumes = requests.session['confirmed_resume']
     addNewPendingResume(requests, toReturn)
-    pending_resumes = requests.session['pending_resume']
     response ={"pending number": len(pending_resumes),"pending" :pending_resumes }
 
     return JsonResponse(response)
