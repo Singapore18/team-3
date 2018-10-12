@@ -54,9 +54,9 @@ def datacleaning(requests):
     mrtstations = ["Bedok", "Tampines", "Jurong", "Dhoby Ghaut", "Orchard", "Tanjong Pagar",
                    "Raffles Place"]
     toReturn = {}
-    #userdata = request.POST.get['userdata']
+    userdata = request.POST.get['userData']
 
-    userdata = {"name" : "I am paulina", "interests" : "singing and dancing", "location" : "I live in Bedok", "age": "22" }
+    #userdata = {"name" : "I am paulina", "interests" : "singing and dancing", "location" : "I live in Bedok", "age": "22" }
     for (key, value) in userdata.items():
         if key == "name":
             nameArray = value.split()
