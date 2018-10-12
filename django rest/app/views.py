@@ -41,7 +41,7 @@ def addNewPendingResume(requests, data):
         "name" : data["name"],
         "interests" : data["interests"],
         "address" : data["address"],
-        "work_schedule" : data["schedule"]
+        "age" : data["age"]
     }
     requests.session['pending_resume'] = pending_resumes
     
@@ -54,9 +54,9 @@ def datacleaning(requests):
     mrtstations = ["Bedok", "Tampines", "Jurong", "Dhoby Ghaut", "Orchard", "Tanjong Pagar",
                    "Raffles Place"]
     toReturn = {}
-    #userdata = request.GET['userdata']
+    #userdata = request.POST.get['userdata']
 
-    userdata = {"name" : "I am paulina", "interests" : "singing and dancing", "address" : "I live in Bedok", "workSchedule": "I only can work on all weekdays" }
+    userdata = {"name" : "I am paulina", "interests" : "singing and dancing", "location" : "I live in Bedok", "age": "22" }
     for (key, value) in userdata.items():
         if key == "name":
             nameArray = value.split()
@@ -77,14 +77,9 @@ def datacleaning(requests):
                 if i in mrtstations:
                     toReturn["address"] = i
 
-        elif key == "workSchedule":
-
-            if "everyday" in value:
-                toReturn["schedule"] = "full time"
-            elif "weekdays" in value and "all" in value:
-                toReturn["schedule"] = "full time"
-            else:
-                toReturn["schedule"] = "part-time"
+        elif key == "age":
+            toReturn["age"] = userdata["age"]
+           
             #else if ("weekends" in scheduleArray and "all" in scheduleArray):
                 #  toReturn[schedule] = "Weekends"
             #else:
