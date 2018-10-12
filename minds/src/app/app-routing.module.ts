@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignupComponent } from './pages/signup/signup.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ClientComponent } from './pages/client/client.component';
+import { CoachComponent } from './pages/coach/coach.component';
+import { EmployerComponent } from './pages/employer/employer.component';
 
 const routes: Routes = [
   {
@@ -15,15 +18,15 @@ const routes: Routes = [
   },
   {
     path: 'pwid',
-    component: HomeComponent
+    component: ClientComponent
   },
   {
     path: 'coach',
-    component: HomeComponent
+    component: CoachComponent
   },
   {
     path: 'employer',
-    component: HomeComponent
+    component: EmployerComponent
   },
   {
     path: 'login',
