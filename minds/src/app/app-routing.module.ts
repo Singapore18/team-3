@@ -6,6 +6,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { ClientComponent } from './pages/client/client.component';
 import { CoachComponent } from './pages/coach/coach.component';
 import { EmployerComponent } from './pages/employer/employer.component';
+import { JobsComponent } from './pages/jobs/jobs.component';
+import { EmployerJobComponent } from './pages/employer-job/employer-job.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,14 @@ const routes: Routes = [
   },
   {
     path: 'employer',
+    redirectTo: 'employer-jobs'
+  },
+  {
+    path: 'employer-jobs',
+    component: EmployerJobComponent
+  },
+  {
+    path: 'employer-resume',
     component: EmployerComponent
   },
   {

@@ -11,6 +11,9 @@ import { CoachComponent } from './coach/coach.component';
 import { EmployerComponent } from './employer/employer.component';
 import { PendingResumeComponent } from './pending-resume/pending-resume.component';
 import { ResumeComponent } from './resume/resume.component';
+import { JobsComponent } from './jobs/jobs.component';
+import { CandidateResumeComponent } from './candidate-resume/candidate-resume.component';
+import { EmployerJobComponent } from './employer-job/employer-job.component';
 
 const PAGES = [
   SignupComponent,
@@ -28,6 +31,9 @@ const COMPONENTS = [];
     ...PAGES,
     PendingResumeComponent,
     ResumeComponent,
+    JobsComponent,
+    CandidateResumeComponent,
+    EmployerJobComponent,
   ],
   imports: [
     CommonModule,
