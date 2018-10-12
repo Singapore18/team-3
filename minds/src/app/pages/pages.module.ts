@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { NgSpinKitModule } from 'ng-spin-kit';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 const PAGES = [
   SignupComponent,
@@ -14,10 +16,12 @@ const COMPONENTS = [];
 
 @NgModule({
   declarations: [
-    ...PAGES
+    ...PAGES,
+    LoginComponent
   ],
   imports: [
     CommonModule,
+    RouterModule,
     NgbModule,
     NgSpinKitModule
   ],
