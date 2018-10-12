@@ -1,0 +1,11 @@
+:host {
+  height: 100vh;
+  display: flex;
+}
+
+.question-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

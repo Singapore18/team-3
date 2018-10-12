@@ -1,0 +1,11 @@
+<div class="question-container">
+  <div class="jumbotron">
+      <h1 class="question" *ngIf="currentQuestionIndex < questions.length">{{current.getQuestion()}}</h1>
+      <h1 class="question" *ngIf="currentQuestionIndex == questions.length">Done!</h1>
+  </div>
+  <div class="mt-5" *ngIf="currentQuestionIndex < questions.length">
+    <sk-wave color="black" *ngIf="answering"></sk-wave>
+    <button type="button" class="btn btn-outline-dark" (click)="startAnswer()" *ngIf="!answering">Click me to answer!</button>
+    <h4 class="answer mt-5" *ngIf="currentQuestionIndex >= 1"><i>{{answers[questions[currentQuestionIndex - 1].answerKey]}}</i></h4>
+  </div>
+</div>
