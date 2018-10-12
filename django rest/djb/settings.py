@@ -30,8 +30,11 @@ ALLOWED_HOSTS = []
 CORS_ORIGIN_WHITELIST = (
     'localhost:8100',
 )
-
+STATIC_DIR = os.path.join(BASE_DIR,"static")
 # Application definition
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    STATIC_DIR]
 
 CORE_APPS =(
     'django.contrib.admin',
@@ -67,11 +70,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'djb.urls'
+TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
